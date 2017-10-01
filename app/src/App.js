@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import UsersList from './components/UsersList'
-import AddUser from './components/AddUser'
+import About from './components/About'
+import { Link, Route } from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -45,17 +46,9 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              <br/>
-              <h1>All Users</h1>
-              <hr/><br/>
-              <AddUser
-                username={this.state.username}
-                email={this.state.email}
-                addUser={this.addUser.bind(this)}
-                handleChange={this.handleChange.bind(this)}
-              />
-              <br/>
-              <UsersList users={this.state.users} />
+              <Route path={`/about`} component={About}/>
+              <Route exact path={`/`} render={() => <UsersList users={this.state.users} />}/>
+              <Link to={`/about`}>About</Link>
             </div>
           </div>
         </div>

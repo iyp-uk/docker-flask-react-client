@@ -3,7 +3,9 @@ import axios from 'axios';
 import './App.css';
 import UsersList from './components/UsersList'
 import About from './components/About'
-import { Link, Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import LoginRegister from './components/LoginRegister'
 
 class App extends Component {
   constructor() {
@@ -12,6 +14,12 @@ class App extends Component {
       users: [],
       username: '',
       email: '',
+      title: 'iyp-uk/docker-flask-react-client',
+      formData: {
+        username: '',
+        email: '',
+        password: ''
+      }
     }
   }
   componentDidMount() {
@@ -43,12 +51,26 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <NavBar title={this.state.title}/>
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              <Route path={`/about`} component={About}/>
-              <Route exact path={`/`} render={() => <UsersList users={this.state.users} />}/>
-              <Link to={`/about`}>About</Link>
+              <Switch>
+                <Route exact path={`/`} render={() => <UsersList users={this.state.users} />}/>
+                <Route exact path={`/login`} render={() => (
+                  <LoginRegister
+                    formType={'Login'}
+                    formData={this.state.formData}
+                  />
+                )} />
+                <Route exact path={`/register`} render={() => (
+                  <LoginRegister
+                    formType={'Register'}
+                    formData={this.state.formData}
+                  />
+                )} />
+                <Route path={`/about`} component={About}/>
+              </Switch>
             </div>
           </div>
         </div>

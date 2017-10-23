@@ -12,7 +12,7 @@ If you don't have it, go grab it.
  
 ### Run the users backend service
  
-See instructions in [the ocker-flask-react-users project's readme](https://github.com/iyp-uk/docker-flask-react-users/blob/master/README.md).
+See instructions in [the docker-flask-react-users project's readme](https://github.com/iyp-uk/docker-flask-react-users/blob/master/README.md).
 
 ### Run the front-end in docker
 
@@ -21,6 +21,19 @@ $ docker build -t docker-flask-react-client .
 $ docker run -p 3000:3000 -v $(pwd)/app:/usr/src/app --name react-client -e REACT_APP_USERS_SERVICE_URL=http://localhost:5000 docker-flask-react-client  
 ```
 You can now browse http://localhost:3000 and see your app.
+
+### Run tests and coverage reports
+
+Tests:
+```console
+$ docker exec -it react-client npm test
+```
+> Please note that the tests will restart automatically as you change your code.
+
+Coverage:
+```console
+$ docker exec -it react-client npm test -- --coverage
+```
 
 ## Configure your IDE
 

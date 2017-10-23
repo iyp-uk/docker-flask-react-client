@@ -1,8 +1,8 @@
 import React from 'react'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { IndexLinkContainer } from 'react-router-bootstrap'
 
-const NavBar = (props) => (
+const NavigationBar = (props) => (
   <Navbar inverse collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
@@ -12,29 +12,29 @@ const NavBar = (props) => (
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
-        <LinkContainer exact to="/">
+        <IndexLinkContainer to="/">
           <NavItem eventKey={1}>Home</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/about">
+        </IndexLinkContainer>
+        <IndexLinkContainer to="/about">
           <NavItem eventKey={2}>About</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/status">
+        </IndexLinkContainer>
+        <IndexLinkContainer to="/status">
           <NavItem eventKey={3}>User Status</NavItem>
-        </LinkContainer>
+        </IndexLinkContainer>
       </Nav>
       <Nav pullRight>
-        <LinkContainer to="/register">
+        <IndexLinkContainer to="/register">
           <NavItem eventKey={1}>Register</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/login">
+        </IndexLinkContainer>
+        <IndexLinkContainer to="/login">
           <NavItem eventKey={2}>Log In</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/logout">
+        </IndexLinkContainer>
+        <IndexLinkContainer to="/logout">
           <NavItem eventKey={3}>Log Out</NavItem>
-        </LinkContainer>
+        </IndexLinkContainer>
       </Nav>
     </Navbar.Collapse>
   </Navbar>
 )
 
-export default NavBar
+export default NavigationBar

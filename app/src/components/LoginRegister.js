@@ -4,7 +4,6 @@ const LoginRegister = (props) => {
   return (
     <div>
       <h1>{props.formType}</h1>
-      <hr/><br/>
       <form onSubmit={(event) => props.handleUserFormSubmit(event)}>
         {props.formType === 'Register' &&
         <div className="form-group">
